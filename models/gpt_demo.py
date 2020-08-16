@@ -1,10 +1,11 @@
 import streamlit as st
 from transformers import pipeline, set_seed
+from transformers.pipelines import TextGenerationPipeline
 
 
 class TextGenerator:
     def __init__(self):
-        self.generator = None
+        self.generator: TextGenerationPipeline
         self.max_length = 30
         set_seed(1)
 
@@ -18,7 +19,7 @@ class TextGenerator:
 
 
 @st.cache(allow_output_mutation=True)
-def instantiate_model():
+def instantiate_generator():
     generator = TextGenerator()
     generator.load_generator()
     return generator
@@ -27,8 +28,8 @@ def instantiate_model():
 if __name__ == '__main__':
     st.title('GPT-2 Demo')
     starting_text = st.text_area('Let GPT-2 finish your thoughts ...')
-    generator = instantiate_model()
+    generator = instantiate_generator()
 
     if starting_text:
-        response = generator.get_answer(starting_text)
+        response = generator.generate_text(starting_text)
         st.markdown(f'Completed phrase: {response}')
