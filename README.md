@@ -1,6 +1,6 @@
 # Prototyping pre-trained models with Streamlit
 
-After installing dependencies using `pip install -r requirements.txt`, you can start the Streamlit app using `streamlit run [path to demo]`.
+After installing dependencies using `pip install -r requirements.txt`, you can start the Streamlit app using `streamlit run file.py`.
 
 All demos are in the `models/` folder. Currently, we only have one demo with GPT-2 in `models/gpt_demo.py`.
 
