@@ -10,7 +10,7 @@ class TextGenerator:
         set_seed(1)
 
     def load_generator(self) -> None:
-        self.generator = pipeline('text-generation', model='gpt2')
+        self.generator = pipeline('text-generation', model='distilgpt2')
 
     def generate_text(self, starting_text: str) -> str:
         return self.generator(starting_text,
